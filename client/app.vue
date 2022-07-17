@@ -137,29 +137,15 @@ const tags = ref([
   },
 ]);
 
-products.value = [
-  {
-    title: "Item #1",
-    id: "1",
-    date: new Date("2022-02-12").toDateString(),
-    amount: 1.22,
-    tags: ["tag1", "tag2"],
-  },
-  {
-    title: "Item #2",
-    id: "2",
-    date: new Date("2022-02-13").toDateString(),
-    amount: 1.22,
-    tags: ["tag1", "tag2"],
-  },
-  {
-    title: "Item #3",
-    id: "3",
-    date: new Date("2012-02-13").toDateString(),
-    amount: 1.22,
-    tags: ["tag1", "tag2"],
-  },
-];
+products.value = [];
+
+const fetchItems = async () => {
+  products.value = await fetch("http://localhost:3000/api/itemList").then(
+    (res) => res.json()
+  );
+};
+
+onMounted(() => fetchItems());
 
 const saveItem = () => {
   isSaving.value = true;

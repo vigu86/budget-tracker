@@ -9,8 +9,6 @@ export default defineNuxtConfig({
     "primeicons/primeicons.css",
     "primeflex/primeflex.css",
   ],
-  // ssr: false,
-
   typescript: {
     strict: true,
   },
